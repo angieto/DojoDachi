@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <title>DojoDachi</title>
+</head>
+<body>
+    @model DojoDachi.Models.Pet
+    <div class="container mx-auto mt-5">
+        <div class="container mx-auto row">
+            <div class="container text-center">
+                <span class="mr-3">Fullness: @Model.Fullness</span>
+                <span class="mr-3">Happiness: @Model.Happiness</span>
+                <span class="mr-3">Meals: @Model.Meals</span>
+                <span class="mr-3">Energy: @Model.Energy</span>
+            </div>
+        </div>
+        <div class="container mx-auto text-center mt-3">
+            <img src="~/images/@Model.Image" alt="@Model.Image">
+        </div>
+        <div class="container mx-auto text-center mt-3">
+            <p>@Model.Message</p>
+        </div>
+        <div class="container mx-auto row text-center mt-3">
+            <div class="mx-auto text-center">
+                <form class="d-inline" asp-action="Feed" asp-controller="Home" method="post">
+                    <button type="submit" class="btn btn-success mr-3">Feed</button>
+                </form>
+                <form class="d-inline" asp-action="Play" asp-controller="Home" method="post">
+                    <button type="submit" class="btn btn-info mr-3">Play</button>
+                </form>
+                <form class="d-inline" asp-action="Work" asp-controller="Home" method="post">
+                    <button type="submit" class="btn btn-danger mr-3">Work</button>
+                </form>
+                <form class="d-inline" asp-action="Sleep" asp-controller="Home" method="post">
+                    <button type="submit" class="btn btn-dark mr-3">Sleep</button>
+                </form>
+            </div>
+        </div>
+        @{
+            @if(@Model.Image == "win.gif" || @Model.Image == "lose.gif") 
+            {
+                <div class="row mx-auto mt-3">
+                    <form asp-action="Restart" asp-controller="Home" method="post">
+                        <button type="submit" class="btn btn-danger mr-3 mx-auto">Restart</button>
+                    </form>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
